@@ -72,24 +72,24 @@
         if (form.elements[i].name=="pass")
         {
           let z=form.elements[i].value;
-          if ((z.match(/[0123456789]/gi))==null)  
+          if (z.match(/[0123456789]/gi)==null)  
           {
             str+="<br \/> нет цифр в пароле!";
             error=true;
           }
-          if ((z.match(/[A-Z]/gi))==null) 
+          if ((z.match(/[A-Z]/gi)==null)&&(z.match(/[А-Я]/gi)==null))
           {
-            str+="<br \/> нет заглавных букв в пароле!";
+            str+="<br \/> в пароле должна быть заглавная буква!";
             error=true;
           }
-          if ((z.match(/[a-z]/gi))==null) 
+          if ((z.match(/[a-z]/gi)==null)&&(z.match(/[а-я]/gi)==null))
           {
-            str+="<br \/> нет строчных букв в пароле!";
+            str+="<br \/> в пароле должна быть строчная буква!";
             error=true;
           }
           if ((z.length)<8) 
           {
-            str+="<br \/> длинна пароля менее 8!";
+            str+="<br \/> длина пароля должна быть не менее восьми символов!";
             error=true;
           }
           
