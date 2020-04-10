@@ -8,10 +8,10 @@
   $mysqli = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
   //var_dump($mysqli);
   
-  $email     = $_POST['email'];
-  $name      = $_POST['name'];
+  $email     = $_POST['email'   ];//принимаем из запроса через AJAX
+  $name      = $_POST['name'    ];
   $lastname  = $_POST['lastname'];
-  $pass      = $_POST['pass'];
+  $pass      = $_POST['pass'    ];
   
   if (empty($email)or empty($name) or empty($lastname) or empty($pass)) exit('Не все поля заполнены');
   
@@ -25,4 +25,10 @@
   
   $mysqli->query("INSERT INTO `users`(`name`,`Lastname`,`email`,`pass`) VALUES ('$name','$lastname','$email','$pass')");
  
+  $text="Вы зарегистрировались на сайте ПНХ.РУ";
+  $result=mail('olga-exit@list.ru', 
+   'Письмо с сайта', 
+   "Имя: $name, E-mail: $email,
+    Сообщение:
+      $text");
   ?>
