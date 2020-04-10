@@ -28,6 +28,9 @@
         box-shadow:0 0 10px rgb(0,0,0, 0.3);
       }
       h1 {color:white;}
+      #info{
+        color:white;
+      }
     </style>
     
   </head>
@@ -35,7 +38,7 @@
     <div class="container py-5">
       <div class="col-md-5 m-auto my-5 form-block py-2 px-3">
         <h1 class="text-center my-3">Регистрация на сайте</h1>
-        <form action="obr_reg.php" method="POST">
+        <form action="obr_reg.php" method="POST"  onsubmit="js_code(this); return false; ">
           <div class="form-group">
             <input required name="email" type="email" class="form-control" placeholder="E-mail (login)">
           </div>
@@ -51,10 +54,35 @@
           <div class="form-group">
             <input type="submit" class="form-control btn btn-primary" value="Регистрация">
           </div>
+          <div id='info'></div>
         </form>
       </div>
     </div>
-
+  <script>
+    function js_code(form)
+    {
+      let xhr=new XMLHttpRequest();
+      let send_str='';
+      for (let i=0;i<form.length-1;i++)
+      {
+        send_str+=form.elements[i].name+'='+form.elements[i].value+'&';
+      }
+      console.log(send_str);
+      xhr.open('POST','obr_reg.php');
+      xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+      xhr.send(send_str);
+      xhr.onreadystatechange = function() 
+      {
+        if (xhr.readyState == 4 && xhr.status==200) 
+        {
+          info.innerHTML="Письмо отправлено!";
+        } else  
+          {
+           info.innerHTML="Возникла ошибка";
+          }
+      }
+    }
+           </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
