@@ -59,30 +59,71 @@
       </div>
     </div>
   <script>
+   
     function js_code(form)
     {
+      let str="";
+      let error=false;
       let xhr=new XMLHttpRequest();
       let send_str='';
       for (let i=0;i<form.length-1;i++)
       {
         send_str+=form.elements[i].name+'='+form.elements[i].value+'&';
-      }
-      console.log(send_str);
-      xhr.open('POST','obr_reg.php');
-      xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-      xhr.send(send_str);
-      xhr.onreadystatechange = function() 
-      {
-        if (xhr.readyState == 4 && xhr.status==200) 
+        if (form.elements[i].name=="pass")
         {
-          info.innerHTML="Письмо отправлено!";
-        } else  
+          let z=form.elements[i].value;
+          if ((z.match(/[0123456789]/gi))==null)  
+          {
+            str+="<br \/> нет цифр в пароле!";
+            error=true;
+          }
+          if ((z.match(/[A-Z]/gi))==null) 
+          {
+            str+="<br \/> нет заглавных букв в пароле!";
+            error=true;
+          }
+          if ((z.match(/[a-z]/gi))==null) 
+          {
+            str+="<br \/> нет строчных букв в пароле!";
+            error=true;
+          }
+          if ((z.length)<8) 
+          {
+            str+="<br \/> длинна пароля менее 8!";
+            error=true;
+          }
+          
+          if (error==true)
+          {
+            info.innerHTML=str;
+            let timeOut = setTimeout (() =>          //один раз ждём секунду перед тем как обновить страницу
+                { 
+                  location.reload();
+                },3000);
+          }
+          //console.log("найден пароль");
+        }
+      }
+      
+      if (!error)
+      {
+        xhr.open('POST','obr_reg.php');
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhr.send(send_str);
+        xhr.onreadystatechange = function() 
+        {
+          if (xhr.readyState == 4 && xhr.status==200) 
+          {
+            info.innerHTML="Письмо отправлено!";
+          } else  
           {
            info.innerHTML="Возникла ошибка";
           }
+        }
       }
+     
     }
-           </script>
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
