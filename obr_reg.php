@@ -26,7 +26,7 @@
   $mysqli->query("INSERT INTO `users`(`name`,`Lastname`,`email`,`pass`) VALUES ('$name','$lastname','$email','$pass')");
  
   $text="Вы зарегистрировались на сайте ПНХ.РУ";
-  $result=mail('olga-exit@list.ru', 
+  $result=mail($email, 
    'Письмо с сайта', 
    "Имя: $name, E-mail: $email,
     Сообщение:
