@@ -1,16 +1,6 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Регистрация на сайте</title>
-    <style>
-      h1 {
+<?php
+ $title='Регистрация на сайте';
+ $style=' h1 {
         text-align:center;
       }
       form>div {
@@ -74,15 +64,13 @@
         
       }
 
-.close:hover { background: #00d9ff; }
-    </style>
-    
-  </head>
-  <body>
+.close:hover { background: #00d9ff; }';
+ include ('php/header.php');
+ ?>
     <div class="container py-5">
       <div class="col-md-5 m-auto my-5 form-block py-2 px-3">
         <h1 class="text-center my-3">Регистрация на сайте</h1>
-        <form action="obr_reg.php" method="POST"  onsubmit="js_code(this);return false; ">
+        <form action="php/obr_reg.php" method="POST"  onsubmit="js_code(this);return false; ">
           
           <div class="form-group">
             <input required name="email" type="email" class="form-control" placeholder="E-mail (login)">
@@ -136,17 +124,17 @@
           }
           if ((z.match(/[A-Z]/gi)==null)&&(z.match(/[А-Я]/gi)==null))
           {
-            str+="<br \/> в пароле должна быть заглавная буква!";
+            str+="<br \/>добавьте в пароль заглавную букву";
             error=true;
           }
           if ((z.match(/[a-z]/gi)==null)&&(z.match(/[а-я]/gi)==null))
           {
-            str+="<br \/> в пароле должна быть строчная буква!";
+            str+="<br \/> добавьте в пароль строчную букву";
             error=true;
           }
           if ((z.length)<8) 
           {
-            str+="<br \/> длина пароля должна быть не менее восьми символов!";
+            str+="<br \/> пароль от восьми символов";
             error=true;
           }
           
@@ -177,7 +165,7 @@
              email_info.innerHTML='';
               let timeOut = setTimeout (() =>          //один раз ждём секунду перед тем как обновить страницу
                 { 
-                  document.location.href = "http://olmaverick.beget.tech/php_education/auth.php";
+                  document.location.href = "http://olmaverick.beget.tech/mysite/auth.php";
                 },3000);
            }
            else 
@@ -190,10 +178,5 @@
      
     }
     </script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
+     <?php include('php/footer.php') ?>
+   
