@@ -1,18 +1,7 @@
-<?php session_start(); ?>
-<!doctype html>
-<html lang="ru">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Личный кабинет</title>
-    <style>
-     body{
-        background: url(img/Обои.jpg);
+<?php session_start();
+$title='Личный кабинет';
+$style='body{
+        background: url(img/_24837-269.jpg);
         background-size: cover;
       }
       .change-btn{
@@ -35,10 +24,10 @@
       }
       .cancel-btn:hover{
         color:darkRed;
-      }
-    </style>
-  </head>
-  <body>
+      }';
+      include('php/header.php');
+?>
+
     <div class="container my-5">
       <p>Имя    :<span><?= $_SESSION['name'];     ?>        </span>
                  <span class="change-btn">       [изменить ]</span>
@@ -77,7 +66,7 @@
           let xhr  = new XMLHttpRequest();
           let value=changeBtn[i].previousElementSibling.firstElementChild.value;
           let about=saveBtn[i].dataset.about;
-          xhr.open('GET',`obr_lk.php?about=${about}&value=${value}`);
+          xhr.open('GET',`php/obr_lk.php?about=${about}&value=${value}`);
           xhr.send();
           changeBtn[i].hidden=false;
           saveBtn  [i].hidden=true;
@@ -96,10 +85,4 @@
       }
     </script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
+<?php include('php/footer.php');?>
