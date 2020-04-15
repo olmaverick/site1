@@ -1,8 +1,6 @@
-<html lang="ru"><head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style>
-      body{
+<?php
+$title='Вход на сайт';
+$style='body{
         height:100%;
         background: url(img/depositphotos_10.jpg) no-repeat;
         background-position:center center;
@@ -21,7 +19,14 @@
       }
       #btn1{
          visibility: hidden;
-      }
+      }';
+      include ('php/header.php');
+?>
+<html lang="ru"><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      
     </style>
   </head>
   <body>
@@ -29,7 +34,7 @@
       <div class="row justify-content-md-center">
         <div class="col-sm-5">
           <h1 class="text-center text-light mb-4">Вход на сайт</h1>
-          <form action="obr_auth.php" method="POST" onsubmit="send(this); return false;">
+          <form action="php/obr_auth.php" method="POST" onsubmit="send(this); return false;">
             <div class="form-group">
               <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
@@ -79,7 +84,7 @@
              if (xhr.responseText == 2) 
              {
               // info.innerHTML='успешно';
-              if (btn1.style.visibility=="visible") document.location.href ="http://olmaverick.beget.tech/php_education/lk.php" 
+              if (btn1.style.visibility=="visible") document.location.href ="http://olmaverick.beget.tech/mysite/lk.php" 
                   btn1.style.visibility="visible";   
              }
              else 
@@ -97,4 +102,4 @@
         }
     </script>
   
-</body></html>
+<?php include('php/footer.php');?>
